@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CitiesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,10 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            'CountriesSeeder',
-            'ProvincesSeeder',
-            'CitiesSeeder',
+        DB::table('cities')->insert([
+            'name' => 'Viedma',
+            'province_id' => 1
         ]);
     }
 }
