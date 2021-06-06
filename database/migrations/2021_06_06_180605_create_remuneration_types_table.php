@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorkingDayTypesTable extends Migration
+class CreateRemunerationTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateWorkingDayTypesTable extends Migration
      */
     public function up()
     {
-        // Simple, partial, exclusive.
-        Schema::create('working_day_types', function (Blueprint $table) {
+        //ex. ad-honorem
+        Schema::create('remuneration_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('code')->unique();
+            $table->string('slug');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateWorkingDayTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('working_day_types');
+        Schema::dropIfExists('remuneration_types');
     }
 }
