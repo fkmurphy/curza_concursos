@@ -22,7 +22,7 @@ class WorkingDayTypesSeeder extends Seeder
         foreach($listWorkingDayTypes as $workingDay) {
             \DB::table('working_day_types')->insert([
                 'name' => $workingDay,
-                'code' => \Str::slug($workingDay, '-'),
+                'code' => slug($workingDay, '-'),
             ]);
         }
     }

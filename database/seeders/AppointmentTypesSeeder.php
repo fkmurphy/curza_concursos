@@ -22,7 +22,7 @@ class AppointmentTypesSeeder extends Seeder
         foreach($listAppointmentTypes as $appointmentType) {
             \DB::table('appointment_types')->insert([
                 'name' => $appointmentType,
-                'code' => \Str::slug($appointmentType, '-'),
+                'code' => slug($appointmentType, '-'),
             ]);
         }
     }

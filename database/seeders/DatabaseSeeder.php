@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             CitiesSeeder::class,
         ]);
         $this->call(WorkingDayTypesSeeder::class);
+        $this->call(AppointmentTypesSeeder::class);
         $this->call(AppointmentsSeeder::class);
+        $this->call(RemunerationTypesSeeder::class);
 
     }
 }
