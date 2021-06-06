@@ -13,16 +13,17 @@ class WorkingDayTypesSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('working_day_types')->insert([
-            'name' => 'Parcial',
-        ]);
+        $listWorkingDayTypes = [
+            'Parcial',
+            'Exclusiva',
+            'Simple',
+        ];
 
-        \DB::table('working_day_types')->insert([
-            'name' => 'Exclusiva',
-        ]);
-
-        \DB::table('working_day_types')->insert([
-            'name' => 'Simple',
-        ]);
+        foreach($listWorkingDayTypes as $workingDay) {
+            \DB::table('working_day_types')->insert([
+                'name' => $workingDay,
+                'code' => \Str::slug($workingDay, '-'),
+            ]);
+        }
     }
 }
