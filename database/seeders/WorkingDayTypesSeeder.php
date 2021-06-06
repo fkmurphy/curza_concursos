@@ -13,15 +13,15 @@ class WorkingDayTypesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('working_day_types')->insert([
+        \DB::table('working_day_types')->insert([
             'name' => 'Parcial',
         ]);
 
-        DB::table('working_day_types')->insert([
+        \DB::table('working_day_types')->insert([
             'name' => 'Exclusiva',
         ]);
 
-        DB::table('working_day_types')->insert([
+        \DB::table('working_day_types')->insert([
             'name' => 'Simple',
         ]);
     }

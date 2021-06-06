@@ -60,7 +60,7 @@ $app->singleton(
 */
 
 $app->configure('app');
-
+$app->configure('cors');
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -72,9 +72,10 @@ $app->configure('app');
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
+$app->middleware([
+    //App\Http\Middleware\ExampleMiddleware::class
+    Fruitcake\Cors\HandleCors::class,
+]);
 
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
@@ -90,6 +91,8 @@ $app->configure('app');
 | totally optional, so you are not required to uncomment this line.
 |
 */
+
+$app->register(Fruitcake\Cors\CorsServiceProvider::class);
 
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
@@ -109,7 +112,7 @@ $app->configure('app');
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
-    require __DIR__.'/../routes/web.php';
+    require __DIR__.'/../routes/api.php';
 });
 
 return $app;

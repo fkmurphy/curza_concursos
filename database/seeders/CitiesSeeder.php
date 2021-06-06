@@ -13,7 +13,7 @@ class CitiesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cities')->insert([
+        \DB::table('cities')->insert([
             'name' => 'Viedma',
             'province_id' => 1
         ]);

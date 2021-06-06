@@ -13,7 +13,7 @@ class CountriesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('countries')->insert([
+        \DB::table('countries')->insert([
             'name' => 'Argentina',
         ]);
     }

@@ -13,9 +13,9 @@ class ProvincesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('provinces')->insert([
+        \DB::table('provinces')->insert([
             'name' => 'Río Negro',
-            'province_id' => 1
+            'country_id'  => 1,
         ]);
     }
 }

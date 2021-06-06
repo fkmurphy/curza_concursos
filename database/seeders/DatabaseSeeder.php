@@ -14,9 +14,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            'CountriesSeeder',
-            'ProvincesSeeder',
-            'CitiesSeeder',
+            CountriesSeeder::class,
+            ProvincesSeeder::class,
+            CitiesSeeder::class,
         ]);
+        $this->call(WorkingDayTypesSeeder::class);
+        $this->call(AppointmentsSeeder::class);
+
     }
 }

@@ -13,10 +13,11 @@ class CreateAppointmentsTable extends Migration
      */
     public function up()
     {
+        //AYS, GFD, JTP, etc.
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('code')->nullable();
+            $table->string('code')->unique()->nullable();
             $table->timestamps();
         });
     }
