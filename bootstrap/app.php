@@ -98,8 +98,6 @@ $app->register(Fruitcake\Cors\CorsServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
-$app->alias('str', \App\Helpers\Str::class);
-
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
