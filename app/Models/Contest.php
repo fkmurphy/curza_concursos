@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contest extends Model
 {
-    //protected $table = 'attribute_modules';
+    //protected $table = '';
     protected $hidden = [ 'id' ];
     protected $fillable = [
         'name',
