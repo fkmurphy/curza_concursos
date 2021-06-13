@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRemunerationTypesTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateRemunerationTypesTable extends Migration
      */
     public function up()
     {
-        //ex. ad-honorem
-        Schema::create('remuneration_types', function (Blueprint $table) {
+        //AYS, GFD, JTP, etc.
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('code');
+            $table->string('code')->unique();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateRemunerationTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('remuneration_types');
+        Schema::dropIfExists('appointments');
     }
 }

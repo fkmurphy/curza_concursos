@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAppointmentTypesTable extends Migration
+class CreateOrientationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateAppointmentTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('appointment_types', function (Blueprint $table) {
+        Schema::create('orientation', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('code')->unique();
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateAppointmentTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appointment_types');
+        Schema::dropIfExists('orientation');
     }
 }

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class AppointmentTypesSeeder extends Seeder
+class CategoryTypesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,7 +20,7 @@ class AppointmentTypesSeeder extends Seeder
         ];
 
         foreach($listAppointmentTypes as $appointmentType) {
-            \DB::table('appointment_types')->insert([
+            \DB::table('category_types')->insert([
                 'name' => $appointmentType,
                 'code' => slug($appointmentType, '-'),
             ]);
