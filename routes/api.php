@@ -34,4 +34,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
         $router->post('/{postulation}/register', 'Enrollment@register');
     });
     
+    $router->group(['prefix' => '/areas'], function () use ($router) {
+        $router->get('/', 'AreaController@list');
+    });
 });
