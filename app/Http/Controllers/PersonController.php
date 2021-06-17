@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Departament;
+use App\Models\Person;
 use Illuminate\Http\Request;
 use App\Traits\CrudTrait;
 
-class DepartamentController extends Controller
+class PersonController extends Controller
 {
     use CrudTrait;
 
     public function setup()
     {
         $this->setModel(Departament::class);
-        $this->setNomenclature('departamento', 'departamentos');
+        $this->setNomenclature('persona', 'personas');
         //$this->setListRequest()
     }
 
