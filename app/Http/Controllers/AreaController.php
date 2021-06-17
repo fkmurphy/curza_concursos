@@ -14,6 +14,7 @@ class AreaController extends Controller
     {
         $this->setModel(Area::class);
         $this->setNomenclature('area', 'areas');
+        //$this->setListRequest()
     }
 
 }
