@@ -45,4 +45,8 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->group(['prefix' => '/working-day-type'], function () use ($router) {
         $router->get('/', 'WorkingDayTypeController@list');
     });
+
+    $router->group(['prefix' => '/departaments'], function () use ($router) {
+        $router->get('/', 'WorkingDayTypeController@list');
+    });
 });
