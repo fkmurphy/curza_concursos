@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\GenerateSlug;
 
 class Area extends Model
 {
@@ -11,6 +12,10 @@ class Area extends Model
     protected $fillable = [
         'name',
         'code',
+    ];
+
+    protected $dispatchesEvents = [
+        'creating' => GenerateSlug::class,
     ];
 
 }
