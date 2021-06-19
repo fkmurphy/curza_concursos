@@ -25,30 +25,52 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     });
 
     $router->group(['prefix' => '/postulations'], function () use ($router) {
+        $controller = 'PostulationsController';
+        $router->get('/', $controller . '@list');
+        $router->post('/create', $controller . '@store');
+        $router->put('/{code}/update', $controller . '@update');
+        $router->get('/{code}/view', $controller . '@view');
         $router->get('/', 'PostulationsController@get');
-        $router->get('/{id}/view', 'PostulationsController@view');
     });
 
     $router->group(['prefix' => '/enrollments'], function () use ($router) {
-        $router->get('/', 'Enrollment@get');
-        $router->post('/{postulation}/register', 'Enrollment@register');
+        $controller = 'EnrollmentController';
+        $router->get('/', $controller . '@list');
+        $router->post('/create', $controller . '@store');
+        $router->put('/{code}/update', $controller . '@update');
+        $router->get('/{code}/view', $controller . '@view');
     });
     
     $router->group(['prefix' => '/areas'], function () use ($router) {
-        $router->get('/', 'AreaController@list');
-        $router->post('/create', 'AreaController@store');
+        $controller = 'AreaController';
+        $router->get('/', $controller . '@list');
+        $router->post('/create', $controller . '@store');
+        $router->put('/{code}/update', $controller . '@update');
+        $router->get('/{code}/view', $controller . '@view');
     });
 
     $router->group(['prefix' => '/countries'], function () use ($router) {
-        $router->get('/', 'CountryController@list');
+        $controller = 'CountryController';
+        $router->get('/', $controller . '@list');
+        $router->post('/create', $controller . '@store');
+        $router->put('/{code}/update', $controller . '@update');
+        $router->get('/{code}/view', $controller . '@view');
     });
 
     $router->group(['prefix' => '/working-day-type'], function () use ($router) {
-        $router->get('/', 'WorkingDayTypeController@list');
+        $controller = 'WorkingDayTypeController';
+        $router->get('/', $controller . '@list');
+        $router->post('/create', $controller . '@store');
+        $router->put('/{code}/update', $controller . '@update');
+        $router->get('/{code}/view', $controller . '@view');
     });
 
     $router->group(['prefix' => '/departaments'], function () use ($router) {
-        $router->get('/', 'WorkingDayTypeController@list');
+        $controller = 'DepartamentController';
+        $router->get('/', $controller . '@list');
+        $router->post('/create', $controller . '@store');
+        $router->put('/{code}/update', $controller . '@update');
+        $router->get('/{code}/view', $controller . '@view');
     });
 
     $router->group(['prefix' => '/contests'], function () use ($router) {
