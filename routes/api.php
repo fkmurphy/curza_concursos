@@ -30,7 +30,6 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
         $router->post('/create', $controller . '@store');
         $router->put('/{code}/update', $controller . '@update');
         $router->get('/{code}/view', $controller . '@view');
-        $router->get('/', 'PostulationsController@get');
     });
 
     $router->group(['prefix' => '/enrollments'], function () use ($router) {
