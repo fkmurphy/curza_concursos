@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\GenerateSlug;
 
 class City extends Model
 {
@@ -13,6 +14,11 @@ class City extends Model
         'code',
         'province_id',
     ];
+
+    protected $dispatchesEvents = [
+        'creating' => GenerateSlug::class,
+    ];
+
 
     /**
      * ------------------------------------------

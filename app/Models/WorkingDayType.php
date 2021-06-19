@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\GenerateSlug;
 
 class WorkingDayType extends Model
 {
@@ -13,5 +14,8 @@ class WorkingDayType extends Model
         'code',
     ];
 
-}
+    protected $dispatchesEvents = [
+        'creating' => GenerateSlug::class,
+    ];
 
+}

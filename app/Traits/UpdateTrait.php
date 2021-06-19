@@ -13,11 +13,12 @@ trait UpdateTrait
      * @param Request $request (Get request)
      * @param model
      */
-    public function update(Request $request, $modelId)
+    public function update(Request $request, $code)
     {
-        //@todo check
+        $model = $this->getModelFromCode($code);
+
         return response()->json([
-            'data' => $this->model->findOrFail($modelId),
+            'data' => $model,
             'message' => 'Se actualizó ' . $this->singularNomenclature,
         ], 200);
     }

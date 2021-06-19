@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\GenerateSlug;
 
 class Contest extends Model
 {
@@ -25,6 +26,11 @@ class Contest extends Model
         'orientation_id',
         'departament_id',
     ];
+
+    protected $dispatchesEvents = [
+        'creating' => GenerateSlug::class,
+    ];
+
 
     /**
      * ------------------------------------------

@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 trait CrudTrait
 {
     protected $model;
@@ -18,9 +20,20 @@ trait CrudTrait
         $this->model = new $namespace();
     }
 
-    protected function setNomenclature(string $plural, string $singular)
+    protected function setNomenclature(string $singular, string $plural)
     {
         $this->singularNomenclature = $singular;
         $this->pluralNomenclature = $plural;
+    }
+
+    protected function getModelFromCode(string $code)
+    {
+        $model = $this->model->whereCode($code)->first();
+
+        if (!isset($model)) {
+            throw new NotFoundHttpException('Model ' . $this->singularNomenclature . ' not found.');
+        }
+
+        return $model;
     }
 }

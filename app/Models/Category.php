@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\GenerateSlug;
 
 class Category extends Model
 {
@@ -12,6 +13,11 @@ class Category extends Model
         'name',
         'code',
     ];
+
+    protected $dispatchesEvents = [
+        'creating' => GenerateSlug::class,
+    ];
+
 
 }
 
