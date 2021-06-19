@@ -36,6 +36,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     
     $router->group(['prefix' => '/areas'], function () use ($router) {
         $router->get('/', 'AreaController@list');
+        $router->post('/create', 'AreaController@store');
     });
 
     $router->group(['prefix' => '/countries'], function () use ($router) {
