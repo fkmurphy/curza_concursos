@@ -13,10 +13,12 @@ trait ViewTrait
      * @param Request $request (Get request)
      * @param Area model
      */
-    public function view(Request $request, $modelId)
+    public function view(Request $request, $code)
     {
+        $model = $this->getModelFromCode($code);
+
         return response()->json([
-            'data' => $this->model->findOrFail($modelId),
+            'data' => $model,
             'message' => 'Datos de ' . $this->singularNomenclature,
         ], 200);
     }
