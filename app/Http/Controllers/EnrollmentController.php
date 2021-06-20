@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class EnrrollmentsController extends Controller
+class EnrollmentController extends Controller
 {
     public function get(Request $request)
     {

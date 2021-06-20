@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Country extends Model
+class Qualification extends Model
 {
     //protected $table = 'attribute_modules';
     protected $hidden = [ 'id' ];
