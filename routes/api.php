@@ -52,6 +52,14 @@ $router->group([
         $router->put('/{code}/update', $controller . '@update');
         $router->get('/{code}/view', $controller . '@view');
     });
+
+    $router->group(['prefix' => '/categories'], function () use ($router) {
+        $controller = 'CategoryController';
+        $router->get('/', $controller . '@list');
+        $router->post('/create', $controller . '@store');
+        $router->put('/{code}/update', $controller . '@update');
+        $router->get('/{code}/view', $controller . '@view');
+    });
     
     $router->group(['prefix' => '/areas'], function () use ($router) {
         $controller = 'AreaController';
