@@ -24,7 +24,7 @@ class Contest extends Model
         'category_id',
         'area_id',
         'orientation_id',
-        'departament_id',
+        //'departament_id',
     ];
 
     protected $dispatchesEvents = [
@@ -67,9 +67,9 @@ class Contest extends Model
         return $this->belongsTo(Orientation::class);
     }
 
-    public function departament()
-    {
-        return $this->belongsTo(Departament::class);
-    }
+    //public function departament()
+    //{
+    //    return $this->belongsTo(Departament::class);
+    //}
 }
 

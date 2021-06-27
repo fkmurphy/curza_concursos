@@ -24,12 +24,13 @@ class CreateContestsTable extends Migration
             $table->longText('description')->comment('description, contact, and other info');
             $table->foreignId('remuneration_type_id')->constrained();
             $table->foreignId('working_day_type_id')->constrained();
-            $table->foreignId('course_id')->constrained();
+            $table->string('course_id')->comment('identifier API SCP.');
+            //$table->foreignId('course_id')->constrained();
             $table->foreignId('category_type_id')->constrained();
             $table->foreignId('category_id')->constrained();
             $table->foreignId('area_id')->nullable()->constrained();
             $table->foreignId('orientation_id')->nullable()->constrained();
-            $table->foreignId('departament_id')->nullable()->constrained();
+            //$table->foreignId('departament_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

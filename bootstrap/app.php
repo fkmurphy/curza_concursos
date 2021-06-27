@@ -23,7 +23,10 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+$app->withFacades(true, [
+    Tymon\JWTAuth\Facades\JWTAuth::class => 'JWTAuth',
+    Tymon\JWTAuth\Facades\JWTFactory::class => 'JWTFactory'
+]);
 
 $app->withEloquent();
 
@@ -60,6 +63,7 @@ $app->singleton(
 */
 
 $app->configure('app');
+//$app->configure('auth');
 $app->configure('cors');
 /*
 |--------------------------------------------------------------------------

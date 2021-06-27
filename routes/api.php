@@ -13,7 +13,20 @@
 |
 */
 
-$router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use ($router) {
+// login and register routes
+$router->post('/api/v1/register', 'AuthController@register');
+$router->post('/api/v1/login', 'AuthController@login');
+
+$router->group([
+    'prefix' => 'api/v1',
+    'middleware' => 'auth'
+], function () use ($router) {
+    // logout and refresh token
+    $router->post('/logout', 'AuthController@logout');
+    $router->post('/refresh', 'AuthController@refresh');
+    // user info
+    $router->post('/me', 'AuthController@userProfile');
+
     $router->get('/', function () use ($router) {
         return $router->app->version();
     });

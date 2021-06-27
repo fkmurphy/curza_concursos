@@ -26,6 +26,7 @@ class CreatePersonsTable extends Migration
             $table->string('legal_address')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->foreignId('place_of_birth')->nullable()->constrained('cities');
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
