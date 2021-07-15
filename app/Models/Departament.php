@@ -25,9 +25,19 @@ class Departament //extends Model
         $this->service = new SPCService();
     }
 
+    /**
+     * Departaments from SPC
+     * @throws Exception if empty or error service
+     * @return Collection data
+     */
     public function all()
     {
         $departaments = $this->service->getDepartments();
+
+        if ($departaments['code'] >= 400) {
+            throw new \Exception('Model empty');
+        }
+
         return $departaments['data'];
     }
 }
