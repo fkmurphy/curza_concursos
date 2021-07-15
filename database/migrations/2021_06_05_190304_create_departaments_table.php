@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * @Deprecated
+ */
 class CreateDepartamentsTable extends Migration
 {
     /**
@@ -13,12 +16,12 @@ class CreateDepartamentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('departaments', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('code')->unique();
-            $table->timestamps();
-        });
+        //Schema::create('departaments', function (Blueprint $table) {
+        //    $table->id();
+        //    $table->string('name');
+        //    $table->string('code')->unique();
+        //    $table->timestamps();
+        //});
     }
 
     /**
@@ -28,6 +31,6 @@ class CreateDepartamentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departaments');
+        //Schema::dropIfExists('departaments');
     }
 }

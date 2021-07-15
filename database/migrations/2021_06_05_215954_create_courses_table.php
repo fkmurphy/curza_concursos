@@ -13,13 +13,13 @@ class CreateCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
-            $table->id();
-            $table->string('code')->unique();
-            $table->string('name')->nullable();
-            $table->foreignId('career_id')->constrained();
-            $table->timestamps();
-        });
+        // Schema::create('courses', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('code')->unique();
+        //     $table->string('name')->nullable();
+        //     $table->foreignId('career_id')->constrained();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -29,6 +29,6 @@ class CreateCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        // Schema::dropIfExists('courses');
     }
 }
