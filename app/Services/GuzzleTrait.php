@@ -1,6 +1,8 @@
 <?php
 namespace App\Services;
 
+use GuzzleHttp\Psr7\Response as GuzzleResponse;
+
 trait GuzzleTrait 
 {
     public static function exec($url, $data = [], array $headers =[], $method = null) : GuzzleResponse

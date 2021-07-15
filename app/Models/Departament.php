@@ -8,23 +8,6 @@ use App\Services\SPCService;
 
 class Departament //extends Model
 {
-    protected $service;
-    //protected $table = 'attribute_modules';
-    //protected $hidden = [ 'id' ];
-    //protected $fillable = [
-    //    'name',
-    //    'code',
-    //];
-
-    //protected $dispatchesEvents = [
-    //    'creating' => GenerateSlug::class,
-    //];
-    //
-    public function __construct()
-    {
-        $this->service = new SPCService();
-    }
-
     /**
      * Departaments from SPC
      * @throws Exception if empty or error service
@@ -32,14 +15,14 @@ class Departament //extends Model
      */
     public static function all()
     {
-        $departaments = $this->service->getDepartments();
+        $service = new SPCService();
+        $departaments = $service->getDepartments();
 
         if ($departaments['code'] >= 400) {
             throw new \Exception('Model error');
         }
 
-        dd($departaments);
-        return collect($departaments['data']);
+        return collect(json_decode($departaments['data']));
     }
 }
 
