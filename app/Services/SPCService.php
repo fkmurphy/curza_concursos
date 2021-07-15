@@ -1,7 +1,13 @@
 <?php
 
+name
+
+use GuzzleTrait;
+
 class SPCService
 {
+    use GuzzleTrait;
+
     protected $client;
     protected $url;
     protected $headers;
@@ -17,32 +23,26 @@ class SPCService
         ];
     }
 
-    public static function exec($url, $data = [], array $headers =[], $method = null) : GuzzleResponse
+    public function getDepartments()
     {
         try {
-            $client = new \GuzzleHttp\Client();
-    
-            $request = [
-                'headers' => $headers
+            $response = self::exec(
+                $this->url . '/departamento',
+                null,
+                $this->headers,
+                'GET'
+            );
+
+            return [
+                'code' => $response->getStatusCode(),
+                'data' => $response->getBody()->getContents(),
+            ];
+        } catch (\Exception $e) {
+            return [
+                'code' => 500,
+                'data' => 'Error en el servidor',
             ];
 
-            if (! empty($data) ) {
-                $request['json'] = $data;
-            }
-
-            $response = $client->request($method, $url, $request);
-
-            return ($response);
-
-        } catch (\GuzzleHttp\Exception\ServerException $e) {
-            \Log::error('Server Exception: ' . $e->getResponse()->getBody()->getContents(), ['user' => auth()->user()]);
-            return $e->getResponse();
-        } catch (\GuzzleHttp\Exception\ClientException $e) {
-            \Log::error('Client Exception: ' . $e->getResponse()->getBody()->getContents(), ['user' => auth()->user()]);
-            return $e->getResponse();
-        } catch (\Exception $e) {
-            \Log::error($e->getMessage(), ['user' => auth()->user()]);
-            return $e->getResponse();
         }
     }
 
