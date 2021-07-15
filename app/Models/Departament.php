@@ -30,15 +30,16 @@ class Departament //extends Model
      * @throws Exception if empty or error service
      * @return Collection data
      */
-    public function all()
+    public static function all()
     {
         $departaments = $this->service->getDepartments();
 
         if ($departaments['code'] >= 400) {
-            throw new \Exception('Model empty');
+            throw new \Exception('Model error');
         }
 
-        return $departaments['data'];
+        dd($departaments);
+        return collect($departaments['data']);
     }
 }
 

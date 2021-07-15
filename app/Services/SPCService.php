@@ -1,8 +1,6 @@
 <?php
 
-name
-
-use GuzzleTrait;
+namespace App\Services;
 
 class SPCService
 {
