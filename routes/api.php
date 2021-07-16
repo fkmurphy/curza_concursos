@@ -88,18 +88,22 @@ $router->group([
     $router->group(['prefix' => '/departaments'], function () use ($router) {
         $controller = 'DepartamentController';
         $router->get('/', $controller . '@list');
-        $router->post('/create', $controller . '@store');
-        $router->put('/{code}/update', $controller . '@update');
         $router->get('/{code}/view', $controller . '@view');
     });
 
     $router->group(['prefix' => '/courses'], function () use ($router) {
         $controller = 'CourseController';
         $router->get('/', $controller . '@list');
-        $router->post('/create', $controller . '@store');
+        $router->get('/{code}/view', $controller . '@view');
+    });
+
+    $router->group(['prefix' => '/careers'], function () use ($router) {
+        $controller = 'CareerController';
+        $router->get('/', $controller . '@list');
         $router->put('/{code}/update', $controller . '@update');
         $router->get('/{code}/view', $controller . '@view');
     });
+
     $router->group(['prefix' => '/contests'], function () use ($router) {
         $router->get('/', 'ContestController@list');
     });
