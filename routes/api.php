@@ -27,7 +27,10 @@ $router->group([
     });
 
     $router->get('/', function () use ($router) {
-        return $router->app->version();
+        return response()->json([
+            'server' => $router->app->version(),
+            'api' => '1.0.0a',
+        ]);
     });
 
 });
