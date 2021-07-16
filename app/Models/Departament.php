@@ -16,7 +16,19 @@ class Departament //extends Model
     public static function all()
     {
         $service = new SPCService();
-        $departaments = $service->getDepartments();
+        $departaments = $service->getAll('departamento');
+
+        if ($departaments['code'] >= 400) {
+            throw new \Exception('Model error');
+        }
+
+        return collect(json_decode($departaments['data']));
+    }
+
+    public static function find($id)
+    {
+        $service = new SPCService();
+        $departaments = $service->getOne('departamento', $id);
 
         if ($departaments['code'] >= 400) {
             throw new \Exception('Model error');

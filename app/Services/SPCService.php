@@ -21,11 +21,11 @@ class SPCService
         ];
     }
 
-    public function getDepartments()
+    public function getAll(string $endpoint) : array
     {
         try {
             $response = self::exec(
-                $this->url . '/departamento',
+                $this->url . '/' . $endpoint,
                 null,
                 $this->headers,
                 'GET'
@@ -44,4 +44,27 @@ class SPCService
         }
     }
 
+    public function getOne(string $endpoint, string $id) : array
+    {
+        try {
+            $response = self::exec(
+                $this->url . '/' . $endpoint . '/' . $id,
+                null,
+                $this->headers,
+                'GET'
+            );
+
+            return [
+                'code' => $response->getStatusCode(),
+                'data' => $response->getBody()->getContents(),
+            ];
+        } catch (\Exception $e) {
+            return [
+                'code' => 500,
+                'data' => 'Error en el servidor',
+            ];
+
+        }
+
+    }
 }

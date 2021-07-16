@@ -2,22 +2,40 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Events\GenerateSlug;
+//use Illuminate\Database\Eloquent\Model;
+//use App\Events\GenerateSlug;
+use App\Services\SPCService;
 
-class Course extends Model
+class Course //extends Model
 {
-    //protected $table = 'attribute_modules';
-    protected $hidden = [ 'id' ];
-    protected $fillable = [
-        'name',
-        'code',
-        'career_id',
-    ];
+    /**
+     * Course from SPC
+     * @throws Exception if empty or error service
+     * @return Collection data
+     */
+    public static function all()
+    {
+        $service = new SPCService();
+        $courses = $service->getAll('asignatura');
 
-    protected $dispatchesEvents = [
-        'creating' => GenerateSlug::class,
-    ];
+        if ($courses['code'] >= 400) {
+            throw new \Exception('Model error');
+        }
+
+        return collect(json_decode($courses['data']));
+    }
+
+    public static function find($id)
+    {
+        $service = new SPCService();
+        $course = $service->getOne('asignatura', $id);
+
+        if ($course['code'] >= 400) {
+            throw new \Exception('Model error, status:'. $course['code'] . $course['data']);
+        }
+
+        return collect(json_decode($course['data']));
+    }
 
 
 }

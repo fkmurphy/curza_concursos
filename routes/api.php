@@ -93,6 +93,13 @@ $router->group([
         $router->get('/{code}/view', $controller . '@view');
     });
 
+    $router->group(['prefix' => '/courses'], function () use ($router) {
+        $controller = 'CourseController';
+        $router->get('/', $controller . '@list');
+        $router->post('/create', $controller . '@store');
+        $router->put('/{code}/update', $controller . '@update');
+        $router->get('/{code}/view', $controller . '@view');
+    });
     $router->group(['prefix' => '/contests'], function () use ($router) {
         $router->get('/', 'ContestController@list');
     });

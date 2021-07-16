@@ -22,7 +22,19 @@ class DepartamentController extends Controller
     {
         $this->setModel(Departament::class);
         $this->setNomenclature('departamento', 'departamentos');
-        //$this->setListRequest()
+    }
+
+    /**
+     * View Model
+     * @param Request $request (Get request)
+     * @param Departament model
+     */
+    public function view(Request $request, $code)
+    {
+        return response()->json([
+            'data' => Departament::find($code),
+            'message' => 'Datos de ' . $this->singularNomenclature,
+        ], 200);
     }
 
 }
