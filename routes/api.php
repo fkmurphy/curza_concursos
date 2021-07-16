@@ -13,10 +13,26 @@
 |
 */
 
-// login and register routes
-$router->post('/api/v1/register', 'AuthController@register');
-$router->post('/api/v1/login', 'AuthController@login');
+// login and register routes without auth
+$router->group([
+    'prefix' => 'api/v1',
+], function() use($router) {
+    $router->post('/register', 'AuthController@register');
+    $router->post('/login', 'AuthController@login');
 
+    $router->get('/ping', function () use ($router) {
+        return response()->json([
+            'message' => 'pong',
+        ]);
+    });
+
+    $router->get('/', function () use ($router) {
+        return $router->app->version();
+    });
+
+});
+
+// routes group with auth
 $router->group([
     'prefix' => 'api/v1',
     'middleware' => 'auth'
@@ -26,16 +42,6 @@ $router->group([
     $router->post('/refresh', 'AuthController@refresh');
     // user info
     $router->post('/me', 'AuthController@userProfile');
-
-    $router->get('/', function () use ($router) {
-        return $router->app->version();
-    });
-
-    $router->get('/ping', function () use ($router) {
-        return response()->json([
-            'message' => 'pong',
-        ]);
-    });
 
     $router->group(['prefix' => '/postulations'], function () use ($router) {
         $controller = 'PostulationsController';
