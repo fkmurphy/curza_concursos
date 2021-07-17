@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 
 class AreaUpdateRequest extends Controller implements UpdateRequest
 {
+    use \App\Traits\RequestTrait;
+
     public function __construct(Request $request)
     {
         $this->validate($request,
@@ -16,8 +18,5 @@ class AreaUpdateRequest extends Controller implements UpdateRequest
                 'name' => 'required'
             ]
         );
-
-        parent::__construct($request);
     }
-
 }
