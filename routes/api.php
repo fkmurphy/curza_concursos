@@ -115,5 +115,6 @@ $router->group([
 
     $router->group(['prefix' => '/contests'], function () use ($router) {
         $router->get('/', 'ContestController@list');
+        $router->post('/createl', 'ContestController@create');
     });
 });

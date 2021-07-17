@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateRequest;
 
 trait UpdateTrait
 {
@@ -13,7 +14,7 @@ trait UpdateTrait
      * @param Request $request (Get request)
      * @param model
      */
-    public function update(Request $request, $code)
+    public function update(UpdateRequest $request, $code)
     {
         $model = $this->getModelFromCode($code);
 
