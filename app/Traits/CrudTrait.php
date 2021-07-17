@@ -36,4 +36,9 @@ trait CrudTrait
 
         return $model;
     }
+
+    protected function getModelName() : string
+    {
+        return class_basename($this->model);
+    }
 }

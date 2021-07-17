@@ -14,6 +14,7 @@ use App\Traits\{
     CreateTrait,
     UpdateTrait,
     ViewTrait,
+    CRUDRequestTrait,
 };
 
 class AreaController extends Controller
@@ -22,22 +23,13 @@ class AreaController extends Controller
     use CreateTrait;
     use ViewTrait;
     use UpdateTrait;
+    use CRUDRequestTrait;
 
     public function setup()
     {
         $this->setModel(Area::class);
         $this->setNomenclature('area', 'areas');
         $this->request();
-    }
-
-    private function request()
-    {
-        app()->bind(StoreRequest::class, function($app) {
-            return $app->make(AreaStoreRequest::class);
-        });
-        app()->bind(UpdateRequest::class, function($app) {
-            return $app->make(AreaUpdateRequest::class);
-        });
     }
 
 }

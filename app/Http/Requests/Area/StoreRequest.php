@@ -3,20 +3,25 @@
 namespace App\Http\Requests\Area;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdateRequest;
+use App\Http\Requests\StoreRequest as SRequest;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 
-class AreaUpdateRequest extends Controller implements UpdateRequest
+class StoreRequest extends Controller implements SRequest
 {
     use \App\Traits\RequestTrait;
 
     public function __construct(Request $request)
     {
+        $this->request = $request;
+
         $this->validate($request,
             [
                 'name' => 'required'
             ]
         );
+
+        //parent::__construct($request);
     }
+
 }

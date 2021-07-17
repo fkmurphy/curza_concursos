@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Area;
+namespace App\Http\Requests\Contest;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreRequest;
+use App\Http\Requests\StoreRequest as SRequest;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 
-class AreaStoreRequest extends Controller implements StoreRequest
+class StoreRequest extends Controller implements SRequest
 {
     use \App\Traits\RequestTrait;
 
@@ -17,7 +17,7 @@ class AreaStoreRequest extends Controller implements StoreRequest
 
         $this->validate($request,
             [
-                'name' => 'required'
+                'init_date' => 'required'
             ]
         );
 

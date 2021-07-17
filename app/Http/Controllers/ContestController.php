@@ -9,6 +9,7 @@ use App\Traits\{
     CreateTrait,
     UpdateTrait,
     ViewTrait,
+    CRUDRequestTrait,
 };
 
 class ContestController extends Controller
@@ -17,12 +18,14 @@ class ContestController extends Controller
     use CreateTrait;
     use ViewTrait;
     use UpdateTrait;
+    use CRUDRequestTrait;
 
     public function setup()
     {
         $this->setModel(Contest::class);
         $this->setNomenclature('concurso', 'concursos');
-        //$this->setListRequest()
+        $this->request();
     }
+
 
 }
