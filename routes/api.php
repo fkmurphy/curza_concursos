@@ -54,8 +54,24 @@ $router->group([
         $router->get('/{code}/view', $controller . '@view');
     });
 
+    $router->group(['prefix' => '/remuneration-types'], function () use ($router) {
+        $controller = 'RemunerationTypeController';
+        $router->get('/', $controller . '@list');
+        $router->post('/create', $controller . '@store');
+        $router->put('/{code}/update', $controller . '@update');
+        $router->get('/{code}/view', $controller . '@view');
+    });
+
     $router->group(['prefix' => '/enrollments'], function () use ($router) {
         $controller = 'EnrollmentController';
+        $router->get('/', $controller . '@list');
+        $router->post('/create', $controller . '@store');
+        $router->put('/{code}/update', $controller . '@update');
+        $router->get('/{code}/view', $controller . '@view');
+    });
+
+    $router->group(['prefix' => '/category-types'], function () use ($router) {
+        $controller = 'CategoryTypeController';
         $router->get('/', $controller . '@list');
         $router->post('/create', $controller . '@store');
         $router->put('/{code}/update', $controller . '@update');
@@ -69,7 +85,7 @@ $router->group([
         $router->put('/{code}/update', $controller . '@update');
         $router->get('/{code}/view', $controller . '@view');
     });
-    
+
     $router->group(['prefix' => '/areas'], function () use ($router) {
         $controller = 'AreaController';
         $router->get('/', $controller . '@list');
@@ -86,7 +102,7 @@ $router->group([
         $router->get('/{code}/view', $controller . '@view');
     });
 
-    $router->group(['prefix' => '/working-day-type'], function () use ($router) {
+    $router->group(['prefix' => '/working-day-types'], function () use ($router) {
         $controller = 'WorkingDayTypeController';
         $router->get('/', $controller . '@list');
         $router->post('/create', $controller . '@store');
@@ -104,6 +120,7 @@ $router->group([
         $controller = 'CourseController';
         $router->get('/', $controller . '@list');
         $router->get('/{code}/view', $controller . '@view');
+        $router->get('/career/{careerId}', $controller . '@getByCareer');
     });
 
     $router->group(['prefix' => '/careers'], function () use ($router) {
@@ -111,6 +128,7 @@ $router->group([
         $router->get('/', $controller . '@list');
         $router->put('/{code}/update', $controller . '@update');
         $router->get('/{code}/view', $controller . '@view');
+        $router->get('/departament/{departamentId}', $controller . '@getByDepartament');
     });
 
     $router->group(['prefix' => '/contests'], function () use ($router) {
