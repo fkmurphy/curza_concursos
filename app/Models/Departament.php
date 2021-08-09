@@ -21,8 +21,17 @@ class Departament //extends Model
         if ($departaments['code'] >= 400) {
             throw new \Exception('Model error');
         }
+        // TODO: implement mapper
 
-        return collect(json_decode($departaments['data']));
+
+        $collect = collect(json_decode($departaments['data']));
+        $collect = $collect->map(function($departament){
+            $map = [];
+            $map['code'] = $departament->id;
+            $map['name'] = $departament->nombre;
+            return $map;
+        });
+        return $collect;
     }
 
     public static function find($id)
