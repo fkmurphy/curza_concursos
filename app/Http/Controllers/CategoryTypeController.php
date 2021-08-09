@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoryType;
+use App\Traits\CreateTrait;
+use App\Traits\ListTrait;
+use App\Traits\UpdateTrait;
+use App\Traits\ViewTrait;
 use Illuminate\Http\Request;
 use App\Traits\CrudTrait;
 
 class CategoryTypeController extends Controller
 {
-    use CrudTrait;
+    use ListTrait;
+    use CreateTrait;
+    use ViewTrait;
+    use UpdateTrait;
 
     public function setup()
     {
