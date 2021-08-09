@@ -3,13 +3,13 @@ namespace App\Services;
 
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
 
-trait GuzzleTrait 
+trait GuzzleTrait
 {
     public static function exec($url, $data = [], array $headers =[], $method = null) : GuzzleResponse
     {
         try {
             $client = new \GuzzleHttp\Client();
-    
+
             $request = [
                 'headers' => $headers
             ];
@@ -30,7 +30,8 @@ trait GuzzleTrait
             return $e->getResponse();
         } catch (\Exception $e) {
             \Log::error($e->getMessage(), ['user' => auth()->user()]);
-            return $e->getResponse();
+            // TODO: fix exception
+            return (new GuzzleResponse());
         }
     }
 
