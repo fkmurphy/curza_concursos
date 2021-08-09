@@ -24,6 +24,15 @@ class CareerController extends Controller
         $this->setNomenclature('carrera', 'carreras');
     }
 
+    public function getByDepartament($departamentId)
+    {
+        return response()->json([
+            'data' => Career::findByDepartament($departamentId),
+            'message' => 'Datos de ' . $this->singularNomenclature,
+        ], 200);
+    }
+
+
     /**
      * View Model
      * @param Request $request (Get request)
