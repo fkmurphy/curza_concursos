@@ -24,6 +24,14 @@ class CourseController extends Controller
         $this->setNomenclature('asignatura', 'asignaturas');
     }
 
+    public function getByCareer($careerId)
+    {
+        return response()->json([
+            'data' => Course::findByCareer($careerId),
+            'message' => 'Datos de ' . $this->singularNomenclature,
+        ], 200);
+    }
+
     /**
      * View Model
      * @param Request $request (Get request)
