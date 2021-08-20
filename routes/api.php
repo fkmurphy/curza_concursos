@@ -33,6 +33,15 @@ $router->group([
         ]);
     });
 
+    $router->get('/public', '\App\Http\Controllers\ContestController@publicList');
+
+    //register user
+    $router->post('/register', '\App\Http\Controllers\RegisterPerson@store');
+
+    $router->get('/countries', '\App\Http\Controllers\CountryController@list');
+    $router->get('/cities', '\App\Http\Controllers\CityController@list');
+    $router->get('/provinces', '\App\Http\Controllers\ProvinceController@list');
+
 });
 
 // routes group with auth
@@ -96,7 +105,6 @@ $router->group([
 
     $router->group(['prefix' => '/countries'], function () use ($router) {
         $controller = 'CountryController';
-        $router->get('/', $controller . '@list');
         $router->post('/create', $controller . '@store');
         $router->put('/{code}/update', $controller . '@update');
         $router->get('/{code}/view', $controller . '@view');
