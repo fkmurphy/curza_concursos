@@ -18,6 +18,7 @@ class CreatePersonsTable extends Migration
             $table->string('first_name');
             $table->string('last_name')->nullable();
             $table->string('uid')->nullable()->comment('Arg country is CUIL');
+            $table->string('dni')->nullable()->comment('Arg country is DNI');
             $table->string('contact_email')->nullable();
             $table->string('cellphone')->nullable();
             $table->string('phone')->nullable();

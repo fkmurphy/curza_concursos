@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Person extends Model
 {
-    //protected $table = 'attribute_modules';
+    protected $table = 'persons';
     protected $hidden = [ 'id' ];
     protected $fillable = [
         'first_name',
@@ -20,6 +20,8 @@ class Person extends Model
         'legal_address',
         'date_of_birth',
         'place_of_birth',
+        'user_id',
+        'dni',
     ];
 }
 

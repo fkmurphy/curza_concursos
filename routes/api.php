@@ -36,7 +36,7 @@ $router->group([
     $router->get('/public', '\App\Http\Controllers\ContestController@publicList');
 
     //register user
-    $router->post('/register', '\App\Http\Controllers\RegisterPerson@store');
+    $router->post('/person-register', '\App\Http\Controllers\RegisterPersonController@store');
 
     $router->get('/countries', '\App\Http\Controllers\CountryController@list');
     $router->get('/cities', '\App\Http\Controllers\CityController@list');
