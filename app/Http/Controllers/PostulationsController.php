@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contest;
+use App\Models\Person;
+use App\Models\Postulation;
 use Illuminate\Http\Request;
 
 class PostulationsController extends Controller
@@ -59,6 +62,24 @@ class PostulationsController extends Controller
                 'footer_data' => 'Toda la documentación solicitada deberá enviarse, al correo electrónico del Departamento Docente, en un único documento y con formato de documento portable (PDF).',
                 'contact_data' => '<ul><li>Académica</li><li>Depto de estudios</li><li>Depto docente</li></ul>'
             ]
+        ]);
+    }
+
+    public function postulate(Request $request, string $code)
+    {
+        $input = $request->all();
+
+        $user = auth();
+        return response()->json([
+            'user' => $user
+        ]);
+        // check date, user available
+        $contest = Contest::whereCode($code)->first();
+        $person = Person::where('user_id', $user->id)->first();
+
+        Postulation::create([
+            'contest_id' => $contest->id,
+            'person_id' => $person->id
         ]);
     }
 }

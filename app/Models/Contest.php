@@ -67,6 +67,11 @@ class Contest extends Model
         return $this->belongsTo(Orientation::class);
     }
 
+    public function getCourse()
+    {
+        return Course::find($this->course_id);
+    }
+
     //public function departament()
     //{
     //    return $this->belongsTo(Departament::class);

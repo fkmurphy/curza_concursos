@@ -62,4 +62,30 @@ class ContestController extends Controller
         ],200);
     }
 
+    public function getInfo(string $contestCode)
+    {
+        $contest = Contest::whereCode($contestCode)->with([
+            'remuneration_type',
+            'orientation',
+            'working_day_type',
+            'category_type',
+            'category',
+            'area'
+        ])->first();
+        if (!isset($contest) || empty($contest)) {
+            return response()->json([
+                'message' => 'No se encontró ' . $this->singularNomenclature,
+            ], 404);
+        }
+
+        $contestArray = $contest->toArray();
+        $contest['course '] = $contest->getCourse();
+
+        return response()->json([
+            'data' => $contest->toArray(),
+            'message' => 'Datos de ' . $this->singularNomenclature,
+        ], 200);
+
+    }
+
 }

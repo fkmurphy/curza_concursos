@@ -61,6 +61,7 @@ $router->group([
         $router->post('/create', $controller . '@store');
         $router->put('/{code}/update', $controller . '@update');
         $router->get('/{code}/view', $controller . '@view');
+        $router->post('/{code}/postulate', $controller . '@postulate');
     });
 
     $router->group(['prefix' => '/remuneration-types'], function () use ($router) {
@@ -142,5 +143,6 @@ $router->group([
     $router->group(['prefix' => '/contests'], function () use ($router) {
         $router->get('/', 'ContestController@list');
         $router->post('/create', 'ContestController@store');
+        $router->get('/get-info/{contestCode}', 'ContestController@getInfo');
     });
 });

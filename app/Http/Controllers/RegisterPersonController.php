@@ -17,19 +17,19 @@ class RegisterPersonController extends Controller
         \DB::beginTransaction();
         try {
             $input = $request->input();
-            // to observer
-            $user = User::create([
-                'uid' => $input['cuil'],
-                'password' => Hash::make($input['password'])
-            ]);
-            Person::create([
-                'uid' => $input['cuil'],
-                'first_name' => $input['first_name'],
-                'last_name' => $input['last_name'],
-                'user_id' => $user->id,
-                'contact_email' => $input['contact_email'],
-            ]);
-            DB::commit();
+            //// to observer
+            //$user = User::create([
+            //    'uid' => $input['cuil'],
+            //    'password' => Hash::make($input['password'])
+            //]);
+            //Person::create([
+            //    'uid' => $input['cuil'],
+            //    'first_name' => $input['first_name'],
+            //    'last_name' => $input['last_name'],
+            //    'user_id' => $user->id,
+            //    'contact_email' => $input['contact_email'],
+            //]);
+            //DB::commit();
             return response()->json([
                 'message' => 'Se guardó ',
             ], 200);
